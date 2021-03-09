@@ -1,10 +1,10 @@
 /*
  * Zdrojové kódy jsou součástí zadání 1. úkolu pro předmětu IJA v ak. roce 2020/2021.
  * (C) Radek Kočí
- * 
+ *
  * Vytvořte třídy StoreGoods, StoreGoodsItem a StoreShelf, které splňují podmínky definované touto testovací
  * třídou. Třídy implementují příslušná rozhraní z balíku ija.ija2020.homework1.goods, která jsou součástí
- * dodaného jar archivu. 
+ * dodaného jar archivu.
  * Kromě metod, předepsaných rozhraními, mohou třídy implementovat své další metody a konstruktory.
  */
 package ija.ija2020.homework1;
@@ -49,11 +49,11 @@ public class Homework1Test {
 
         Assert.assertFalse("Zbozi " + goods1 + " je prazdne.", goods1.empty());
         Assert.assertEquals("Pocet kusu v seznamu zbozi " + goods1, 3, goods1.size());
-                     
+
         Assert.assertTrue("Kus zbozi odebran.", goods1.remove(itm13));
-        Assert.assertEquals("Pocet kusu v seznamu zbozi " + goods1, 2, goods1.size());        
+        Assert.assertEquals("Pocet kusu v seznamu zbozi " + goods1, 2, goods1.size());
     }
-    
+
     /** Ověří implementaci StoreShelf. */
     @Test
     public void test02() {
@@ -61,7 +61,7 @@ public class Homework1Test {
         testShelf(shelf);
     }
 
-    /** Ověří na referenční implementaci ReferenceShelf. 
+    /** Ověří na referenční implementaci ReferenceShelf.
      *  Tato třída je součástí dodaného jar archivu, tudíž ji neimplementujte, pouze importujte.
      */
     @Test
@@ -83,7 +83,7 @@ public class Homework1Test {
 
         Assert.assertEquals("Pocet kusu v seznamu zbozi " + goods1, 3, goods1.size());
         Assert.assertEquals("Pocet kusu v seznamu zbozi " + goods2, 1, goods2.size());
-        
+
         shelf.put(itm11);
         shelf.put(itm12);
         shelf.put(itm13);
@@ -91,36 +91,36 @@ public class Homework1Test {
 
         Assert.assertEquals("Pocet kusu zbozi " + goods1 + " v regalu", 3, shelf.size(goods1));
         Assert.assertEquals("Pocet kusu zbozi " + goods1 + " v regalu", 1, shelf.size(goods2));
-        
+
         Goods goodsTest;
         GoodsItem itm;
 
         // overi, zda se vyrovna i s neexistujicim zbozim
-        goodsTest = new StoreGoods("Stokrle");        
+        goodsTest = new StoreGoods("Stokrle");
         Assert.assertFalse("Regal neobsahuje zbozi " + goodsTest, shelf.containsGoods(goodsTest));
         itm = shelf.removeAny(goodsTest);
         Assert.assertNull("Odstraneni kusu zbozi z regalu", itm);
         Assert.assertEquals("Pocet zbyvajicich kusu v regalu", 0, shelf.size(goodsTest));
 
         // overi, ze najde zbozi podle nazvu a id
-        goodsTest = new StoreGoods("Stul");        
+        goodsTest = new StoreGoods("Stul");
         Assert.assertTrue("Regal obsahuje zbozi " + goods1, shelf.containsGoods(goods1));
         Assert.assertTrue("Regal obsahuje zbozi " + goodsTest, shelf.containsGoods(goodsTest));
-                
+
         // odstraneni zbozi z regalu
         itm = shelf.removeAny(goodsTest);
         Assert.assertNotNull("Odstraneni kusu zbozi z regalu", itm);
         Assert.assertEquals("Pocet zbyvajicich kusu v regalu", 2, shelf.size(goodsTest));
         // odstraneni zbozi ze seznamu (zbozi je prodano, vyskladneno)
         Assert.assertTrue("Odstraneni kusu zbozi z prehledu zbozi (prodano)", itm.sell());
-        Assert.assertEquals("Pocet zbyvajicich kusu v seznamu zbozi pro " + goods1, 2, goods1.size());        
+        Assert.assertEquals("Pocet zbyvajicich kusu v seznamu zbozi pro " + goods1, 2, goods1.size());
 
         // odstraneni zbozi z regalu + prodej
         itm = shelf.removeAny(goods2);
         Assert.assertNotNull("Odstraneni kusu zbozi z regalu", itm);
         Assert.assertEquals("Pocet zbyvajicich kusu v regalu", 0, shelf.size(goods2));
         Assert.assertTrue("Odstraneni kusu zbozi z prehledu zbozi (prodano)", itm.sell());
-        Assert.assertEquals("Pocet zbyvajicich kusu v seznamu zbozi pro " + goods2, 0, goods2.size());        
+        Assert.assertEquals("Pocet zbyvajicich kusu v seznamu zbozi pro " + goods2, 0, goods2.size());
     }
-        
+
 }

@@ -1,3 +1,13 @@
+/*
+ * File:          StoreShelf.java
+ * Course:        Java Programming Language (IJA) -- BUT FIT
+ * Project:       A simple implementation of a system that represents shelfs
+                  for storing items
+ * Author:        Tomas Beranek (xberan46)
+ * Email:         xberan46@stud.fit.vutbr.cz
+ * Date:          9.3.2021
+ */
+
 package ija.ija2020.homework1.store;
 
 import ija.ija2020.homework1.goods.Goods;

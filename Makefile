@@ -9,4 +9,4 @@ clean:
 	rm -rf build xberan46.zip
 
 zip:
-	cd src/ && zip -r xberan46.zip && mv xberan46.zip ../
+	cd src/ && zip -r xberan46.zip ija && mv xberan46.zip ../

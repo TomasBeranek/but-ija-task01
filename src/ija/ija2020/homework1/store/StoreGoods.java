@@ -14,13 +14,12 @@ import ija.ija2020.homework1.goods.Goods;
 import ija.ija2020.homework1.goods.GoodsItem;
 import java.time.LocalDate;
 import java.util.HashSet;
-import java.util.Set;
-import java.util.Iterator;
+import java.util.Objects;
 
 
 public class StoreGoods implements Goods{
   private String name = null;
-  private Set<GoodsItem> goods = new HashSet<GoodsItem>();
+  private HashSet<GoodsItem> goods = new HashSet<GoodsItem>();
 
 
   public StoreGoods(String name){
@@ -62,5 +61,19 @@ public class StoreGoods implements Goods{
 
   public int size(){
     return this.goods.size();
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      StoreGoods that = (StoreGoods) o;
+      return name.equals(that.name);
+  }
+
+  @Override
+  public int hashCode() {
+      return Objects.hash(name);
   }
 }
